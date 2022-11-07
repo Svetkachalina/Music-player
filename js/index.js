@@ -83,6 +83,13 @@ const dataMusic = [
       poster: 'img/photo12.jpg',
       mp3: 'audio/Madonna - Frozen.mp3',
     },
+    {
+      id: '13',
+      artist: 'Sia',
+      track: 'Unstoppable',
+      poster: 'img/photo13.jpg',
+      mp3: 'audio/Sia - Unstoppable.mp3',
+    },
   ];
 
   let playlist = [];
@@ -97,6 +104,9 @@ const favoriteBtn = document.querySelector('.header__favorite-btn');
 const tracksCard = document.getElementsByClassName('track');
 const catalogContainer = document.querySelector('.catalog__container');
 const player = document.querySelector('.player');
+const trackTitle = document.querySelector('.track-info__title');
+const trackArtist = document.querySelector('.track-info__artist');
+
 const pauseBtn = document.querySelector('.player__controller_pause');
 const stopBtn = document.querySelector('.player__controller_stop');
 const prevBtn = document.querySelector('.player__controller_prev');
@@ -136,6 +146,7 @@ const pausePlayer = () => {
     }
 };
 
+let trackName
 const playMusic = (event) => {
     event.preventDefault();
     const trackActive = event.currentTarget;
@@ -161,6 +172,8 @@ const playMusic = (event) => {
         return id === item.id;
     });
     audio.src = track.mp3;
+    trackTitle.textContent = track.track;
+    trackArtist.textContent = track.artist;
 
     audio.play();
     pauseBtn.classList.remove('player__icon_play');
